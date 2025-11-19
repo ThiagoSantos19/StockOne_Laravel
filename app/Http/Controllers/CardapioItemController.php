@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CardapioItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CardapioItemController extends Controller
 {
@@ -34,10 +35,15 @@ class CardapioItemController extends Controller
             'complexidade_preparo' => ['required', 'integer', 'min:1', 'max:10'],
             'categoria' => ['nullable', 'string', 'max:100'],
             'ativo_online' => ['nullable', 'boolean'],
+            'imagem' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,webp', 'max:2048'],
         ]);
 
         $data['restaurante_id'] = $this->restauranteId();
         $data['ativo_online'] = $request->boolean('ativo_online');
+
+        if ($request->hasFile('imagem')) {
+            $data['imagem'] = $request->file('imagem')->store('cardapio-itens', 'public');
+        }
 
         CardapioItem::create($data);
 
@@ -63,9 +69,18 @@ class CardapioItemController extends Controller
             'complexidade_preparo' => ['required', 'integer', 'min:1', 'max:10'],
             'categoria' => ['nullable', 'string', 'max:100'],
             'ativo_online' => ['nullable', 'boolean'],
+            'imagem' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,webp', 'max:2048'],
         ]);
 
         $data['ativo_online'] = $request->boolean('ativo_online');
+
+        if ($request->hasFile('imagem')) {
+            // Remove a imagem antiga se existir
+            if ($cardapioItem->imagem) {
+                Storage::disk('public')->delete($cardapioItem->imagem);
+            }
+            $data['imagem'] = $request->file('imagem')->store('cardapio-itens', 'public');
+        }
 
         $cardapioItem->update($data);
 
@@ -75,6 +90,11 @@ class CardapioItemController extends Controller
     public function destroy(CardapioItem $cardapioItem)
     {
         $this->authorizeItem($cardapioItem);
+
+        // Remove a imagem se existir
+        if ($cardapioItem->imagem) {
+            Storage::disk('public')->delete($cardapioItem->imagem);
+        }
 
         $cardapioItem->delete();
 

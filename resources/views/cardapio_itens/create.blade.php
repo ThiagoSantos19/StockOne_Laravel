@@ -4,7 +4,7 @@
 @section('subtitle', 'Configure produtos e pratos do restaurante')
 
 @section('content')
-    <form action="{{ route('cardapio-itens.store') }}" method="POST" class="space-y-6 rounded-2xl border border-gray-100 bg-white p-8 shadow-sm">
+    <form action="{{ route('cardapio-itens.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6 rounded-2xl border border-gray-100 bg-white p-8 shadow-sm">
         @csrf
 
         @include('cardapio_itens._form', ['item' => new \App\Models\CardapioItem()])

@@ -20,6 +20,7 @@ class CardapioItem extends Model
         'complexidade_preparo',
         'categoria',
         'ativo_online',
+        'imagem',
     ];
 
     protected $casts = [

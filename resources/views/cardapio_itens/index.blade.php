@@ -15,8 +15,8 @@
             <table class="min-w-full divide-y divide-gray-200 text-sm">
                 <thead class="bg-red-50 text-left text-xs font-semibold uppercase tracking-wide text-red-600">
                     <tr>
+                        <th class="px-6 py-3">Imagem</th>
                         <th class="px-6 py-3">Item</th>
-                        <th class="px-6 py-3">Restaurante</th>
                         <th class="px-6 py-3">Preço</th>
                         <th class="px-6 py-3">Categoria</th>
                         <th class="px-6 py-3">Status</th>
@@ -26,8 +26,16 @@
                 <tbody class="divide-y divide-gray-100">
                     @forelse ($itens as $item)
                         <tr>
+                            <td class="px-6 py-4">
+                                @if ($item->imagem)
+                                    <img src="{{ asset('storage/' . $item->imagem) }}" alt="{{ $item->nome }}" class="h-16 w-16 rounded-lg object-cover border border-gray-200">
+                                @else
+                                    <div class="flex h-16 w-16 items-center justify-center rounded-lg border border-gray-200 bg-gray-50 text-xs text-gray-400">
+                                        Sem imagem
+                                    </div>
+                                @endif
+                            </td>
                             <td class="px-6 py-4 font-semibold text-gray-900">{{ $item->nome }}</td>
-                            <td class="px-6 py-4 text-gray-600">{{ $item->restaurante?->nome ?? '—' }}</td>
                             <td class="px-6 py-4 text-gray-600">R$ {{ number_format($item->preco_venda, 2, ',', '.') }}</td>
                             <td class="px-6 py-4 text-gray-500">{{ $item->categoria ?? '—' }}</td>
                             <td class="px-6 py-4">

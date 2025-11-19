@@ -4,7 +4,7 @@
 @section('subtitle', $item->nome)
 
 @section('content')
-    <form action="{{ route('cardapio-itens.update', $item) }}" method="POST" class="space-y-6 rounded-2xl border border-gray-100 bg-white p-8 shadow-sm">
+    <form action="{{ route('cardapio-itens.update', $item) }}" method="POST" enctype="multipart/form-data" class="space-y-6 rounded-2xl border border-gray-100 bg-white p-8 shadow-sm">
         @csrf
         @method('PUT')
 
