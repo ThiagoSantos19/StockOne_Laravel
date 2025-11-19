@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Itens de pedidos')
+@section('title', 'Itens do pedido')
 @section('subtitle', 'Detalhe cada item produzido')
 
 @section('actions')

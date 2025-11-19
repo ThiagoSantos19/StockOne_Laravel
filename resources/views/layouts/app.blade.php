@@ -31,7 +31,7 @@
                             ['label' => 'Insumos', 'route' => 'insumos.index'],
                             ['label' => 'Estoque', 'route' => 'estoque.index'],
                             ['label' => 'Pedidos', 'route' => 'pedidos.index'],
-                            ['label' => 'Pedido Itens', 'route' => 'pedido-itens.index'],
+                            ['label' => 'Itens do pedido', 'route' => 'pedido-itens.index'],
                             ['label' => 'Fila de Produção', 'route' => 'fila-producao.index'],
                             ['label' => 'Alertas', 'route' => 'alertas.index'],
                             ['label' => 'Sugestões de Compra', 'route' => 'compras-sugestoes.index'],
