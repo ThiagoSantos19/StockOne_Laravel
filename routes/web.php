@@ -9,6 +9,8 @@ use App\Http\Controllers\FilaProducaoController;
 use App\Http\Controllers\InsumoController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\PedidoItemController;
+use App\Http\Controllers\PublicCartController;
+use App\Http\Controllers\PublicMenuController;
 use App\Http\Controllers\ReceitaController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,8 +20,15 @@ Route::get('/', function () {
         : redirect()->route('auth.login');
 });
 
+Route::get('/menu', [\App\Http\Controllers\PublicMenuController::class, 'index'])->name('public.menu');
+
 Route::get('/login', [AuthController::class, 'showLogin'])->name('auth.login');
 Route::post('/login', [AuthController::class, 'authenticate'])->name('auth.login.submit');
+
+Route::post('/carrinho', [PublicCartController::class, 'store'])->name('public.cart.store');
+Route::patch('/carrinho/{cardapioItemId}', [PublicCartController::class, 'update'])->name('public.cart.update');
+Route::delete('/carrinho/{cardapioItemId}', [PublicCartController::class, 'destroy'])->name('public.cart.destroy');
+Route::post('/carrinho/finalizar', [PublicCartController::class, 'checkout'])->name('public.cart.checkout');
 
 Route::middleware('restaurante.session')->group(function () {
     Route::view('/dashboard', 'dashboard')->name('dashboard');

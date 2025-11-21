@@ -35,6 +35,7 @@
                             ['label' => 'Fila de Produção', 'route' => 'fila-producao.index'],
                             ['label' => 'Alertas', 'route' => 'alertas.index'],
                             ['label' => 'Sugestões de Compra', 'route' => 'compras-sugestoes.index'],
+                            ['label' => 'Menu público', 'route' => 'public.menu'],
                         ];
                     @endphp
 
