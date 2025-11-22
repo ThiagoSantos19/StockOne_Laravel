@@ -34,8 +34,8 @@
                             ['label' => 'Itens do pedido', 'route' => 'pedido-itens.index'],
                             ['label' => 'Fila de Produção', 'route' => 'fila-producao.index'],
                             ['label' => 'Alertas', 'route' => 'alertas.index'],
-                            ['label' => 'Sugestões de Compra', 'route' => 'compras-sugestoes.index'],
-                            ['label' => 'Menu público', 'route' => 'public.menu'],
+                            ['label' => 'Sugestões de Compras', 'route' => 'compras-sugestoes.index'],
+                            ['label' => 'Menu', 'route' => 'public.menu'],
                         ];
                     @endphp
 

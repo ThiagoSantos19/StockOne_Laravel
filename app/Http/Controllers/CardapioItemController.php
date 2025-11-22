@@ -35,7 +35,7 @@ class CardapioItemController extends Controller
             'complexidade_preparo' => ['required', 'integer', 'min:1', 'max:10'],
             'categoria' => ['nullable', 'string', 'max:100'],
             'ativo_online' => ['nullable', 'boolean'],
-            'imagem' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,webp', 'max:2048'],
+            'imagem' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,webp', 'max:8192'],
         ]);
 
         $data['restaurante_id'] = $this->restauranteId();
@@ -69,7 +69,7 @@ class CardapioItemController extends Controller
             'complexidade_preparo' => ['required', 'integer', 'min:1', 'max:10'],
             'categoria' => ['nullable', 'string', 'max:100'],
             'ativo_online' => ['nullable', 'boolean'],
-            'imagem' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,webp', 'max:2048'],
+            'imagem' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,webp', 'max:8192'],
         ]);
 
         $data['ativo_online'] = $request->boolean('ativo_online');

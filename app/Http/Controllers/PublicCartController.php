@@ -113,7 +113,7 @@ class PublicCartController extends Controller
                 'numero_pedido_externo' => now()->format('YmdHis'),
                 'plataforma_origem' => 'web',
                 'data_hora_pedido' => now(),
-                'status' => 'rascunho',
+                'status' => 'concluido',
                 'valor_total' => $valorTotal,
                 'tempo_preparo_estimado' => null,
             ]);
